@@ -1,0 +1,66 @@
+import bolichito.*
+import personas.*
+import objetos.*
+
+//Rosa
+test "Le gustan a Rosa:pelota, remera o muñeco cuyo peso sea menor a 2000"{
+    assert.that(rosa.leGusta(pelota))
+    assert.that(rosa.leGusta(remera))
+    assert.that(rosa.leGusta(munieco))
+}
+test "No le gustan a Rosa: la biblioteca o una placa de 3500"{
+    assert.that(!rosa.leGusta(biblioteca))
+    placa.peso(3500)
+    assert.that(!rosa.leGusta(placa))
+}
+
+//Estefania
+test "Le gustan a estefania:placa roja, biblioteca"{
+    placa.color(rojo)
+    assert.that(estefania.leGusta(placa))
+    assert.that(estefania.leGusta(biblioteca))
+}
+test "No le gustan a estefania: pelota, munieco"{
+    assert.that(!estefania.leGusta(pelota))
+    assert.that(!estefania.leGusta(munieco))
+}
+
+//Luisa
+test "Le gustan a Luisa: placa, munieco"{
+    assert.that(luisa.leGusta(placa))
+    assert.that(luisa.leGusta(munieco))
+}
+test "No le gustan a luisa: pelota, remera"{
+    assert.that(!luisa.leGusta(pelota))
+    assert.that(!luisa.leGusta(remera))
+}
+
+//Juan
+test "Le gustan a juan: pelota, munieco, placa de 1500gm"{
+    placa.peso(1500)
+    assert.that(juan.leGusta(placa))
+    assert.that(juan.leGusta(pelota))
+    assert.that(juan.leGusta(munieco))
+}
+test "No le gustan a juan: biblioteca, remera"{
+    assert.that(!juan.leGusta(biblioteca))
+    assert.that(!juan.leGusta(remera))
+}
+
+//Bolichito
+test "es brillante cuando ambos objetos en exposicion son brillantes"{
+    bolichito.enVidriera(munieco)
+    bolichito.enMostrador(placa)
+    assert.that(bolichito.esBrillante())
+}
+test "esta equilibrado cuando el objeto de vidriera pesa menos que el del mostrador"{
+    bolichito.enVidriera(remera)
+    bolichito.enMostrador(biblioteca)
+    assert.that(bolichito.estaEquilibrado())
+}
+test "es monocromatico cuando ambos objetos en exposicion del mismo color"{
+    placa.color(rojo)
+    bolichito.enVidriera(placa)
+    bolichito.enMostrador(remera)
+    assert.that(bolichito.esMonocromatico())
+}
